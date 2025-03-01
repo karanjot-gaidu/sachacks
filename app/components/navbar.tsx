@@ -49,6 +49,7 @@ export default function Navbar() {
                             Play
                         </button>
                         <Link href="/about" className="flex items-center h-full px-3 text-white hover:text-[#008170] transition-colors">About</Link>
+                        <Link href="/profile" className="flex items-center h-full px-3 text-white hover:text-[#008170] transition-colors">Profile</Link>
                         <div className="flex items-center">
                             {!isSignedIn && (
                                 <button onClick={() => openSignIn()} className="px-4 py-2 rounded-lg bg-[#005B41] hover:bg-[#008170] text-white text-sm font-semibold transition-colors duration-300">
