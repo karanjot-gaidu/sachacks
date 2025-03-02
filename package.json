@@ -16,6 +16,7 @@
     "@types/react-syntax-highlighter": "^15.5.13",
     "autoprefixer": "^10.4.20",
     "axios": "^1.8.1",
+    "canvas-confetti": "^1.9.3",
     "clsx": "^2.1.1",
     "next": "15.1.4",
     "openai": "^4.86.1",
@@ -26,5 +27,8 @@
     "react-syntax-highlighter": "^15.6.1",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "@types/canvas-confetti": "^1.9.0"
   }
 }

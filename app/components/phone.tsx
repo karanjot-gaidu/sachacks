@@ -1,16 +1,52 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Banking from './banking';
 import Email from './email';
 import Homescreen from './homescreen';
 import { useGame } from './game-context';
+import VictoryScreen from './victory-screen';
+import confetti from 'canvas-confetti';
 
 export default function Phone() {
     const [currentApp, setCurrentApp] = useState<string | null>(null);
-    const { generateNewGame } = useGame();
+    const { generateNewGame, scenario, userGuesses } = useGame();
+    const [showVictory, setShowVictory] = useState(false);
+
+    // Check for victory condition
+    useEffect(() => {
+        if (scenario && userGuesses.length > 0) {
+            const correctGuesses = userGuesses.every(guess => 
+                scenario.fraudulentTransactionIds.includes(guess)
+            );
+            const allFound = scenario.fraudulentTransactionIds.every(id => 
+                userGuesses.includes(id)
+            );
+
+            if (correctGuesses && allFound) {
+                // Trigger victory celebration
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+                setShowVictory(true);
+            }
+        }
+    }, [userGuesses, scenario]);
 
     const handleBack = () => {
+        setCurrentApp(null);
+    };
+
+    const handleNewGame = () => {
+        setShowVictory(false);
+        generateNewGame();
+        setCurrentApp(null);
+    };
+
+    const handleHome = () => {
+        setShowVictory(false);
         setCurrentApp(null);
     };
 
@@ -50,6 +86,13 @@ export default function Phone() {
                 <div className="relative h-[calc(100%-2rem)] bg-[#1A1A1A]">
                     {renderApp()}
                 </div>
+
+                {showVictory && (
+                    <VictoryScreen 
+                        onNewGame={handleNewGame}
+                        onHome={handleHome}
+                    />
+                )}
             </div>
             
             {/* New Game Button */}
