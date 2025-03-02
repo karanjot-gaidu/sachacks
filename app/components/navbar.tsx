@@ -27,8 +27,16 @@ export default function Navbar() {
         }
       };
 
+      const handleProfileSignIn = () => {
+        if (isSignedIn) {
+          router.push("/profile");
+        } else {
+          openSignIn({ redirectUrl: "/profile" });
+        }
+      };
+
     return (
-        <nav className="bg-[#0F0F0F] shadow-lg fixed w-full z-10 top-0 left-0 right-0 h-16">
+        <nav className="bg-[#0F0F0F] shadow-lg fixed w-full z-[50] top-0 left-0 right-0 h-16">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
                 <div className="flex justify-between items-center h-full">
                     <Link href="/" className="flex items-center h-full">
@@ -49,7 +57,7 @@ export default function Navbar() {
                             Play
                         </button>
                         <Link href="/about" className="flex items-center h-full px-3 text-white hover:text-[#008170] transition-colors">About</Link>
-                        <Link href="/profile" className="flex items-center h-full px-3 text-white hover:text-[#008170] transition-colors">Profile</Link>
+                        <button onClick={handleProfileSignIn} className="flex items-center h-full px-3 text-white hover:text-[#008170] transition-colors">Profile</button>
                         <div className="flex items-center">
                             {!isSignedIn && (
                                 <button onClick={() => openSignIn()} className="px-4 py-2 rounded-lg bg-[#005B41] hover:bg-[#008170] text-white text-sm font-semibold transition-colors duration-300">

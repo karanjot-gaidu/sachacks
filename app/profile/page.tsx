@@ -76,7 +76,7 @@ function ProfileContent() {
         <div className="relative min-h-screen flex items-center justify-center p-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl">
             {/* Profile Card */}
-            <div className="bg-[#232D3F] p-8 rounded-lg border border-[#008170] shadow-[0_0_15px_rgba(0,129,112,0.3)]">
+            <div className="p-8 rounded-lg border border-[#008170] shadow-[0_0_15px_rgba(0,129,112,0.3)]">
               <div className="flex flex-col items-center space-y-6">
                 {/* Profile Image */}
                 <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-[#008170]">
@@ -133,7 +133,7 @@ function ProfileContent() {
             </div>
 
             {/* Achievements Card */}
-            <div className="bg-[#232D3F] p-8 rounded-lg border border-[#008170] shadow-[0_0_15px_rgba(0,129,112,0.3)]">
+            <div className="p-8 rounded-lg border border-[#008170] shadow-[0_0_15px_rgba(0,129,112,0.3)]">
               <AchievementsList achievements={achievements} />
             </div>
           </div>

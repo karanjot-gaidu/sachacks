@@ -4,6 +4,7 @@ import Script from "next/script";
 import { Metadata } from "next";
 import localFont from "next/font/local";
 import Navbar from "./components/navbar";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://clerk-next-app.vercel.app/"),
   title: "Next.js Clerk Template",
@@ -31,18 +32,35 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <ClerkProvider
         appearance={{
-          variables: { colorPrimary: "#000000" },
+          variables: { colorPrimary: "#008170" },
           elements: {
             formButtonPrimary:
-              "bg-black border border-black border-solid hover:bg-white hover:text-black",
+              "bg-[#008170] border border-[#008170] border-solid hover:bg-[#005B41] hover:text-white text-white",
             socialButtonsBlockButton:
-              "bg-white border-gray-200 hover:bg-transparent hover:border-black text-gray-600 hover:text-black",
-            socialButtonsBlockButtonText: "font-semibold",
+              "bg-[#008170] border-[#008170] hover:bg-[#005B41] hover:border-[#008170] text-white",
+            socialButtonsBlockButtonText: "font-semibold text-white",
             formButtonReset:
-              "bg-white border border-solid border-gray-200 hover:bg-transparent hover:border-black text-gray-500 hover:text-black",
+              "bg-[#232D3F] border border-solid border-[#008170] hover:bg-[#005B41] hover:border-[#008170] text-white",
             membersPageInviteButton:
-              "bg-black border border-black border-solid hover:bg-white hover:text-black",
-            card: "bg-[#fafafa]",
+              "bg-[#008170] border border-[#008170] border-solid hover:bg-[#005B41] text-white",
+            card: "bg-[#232D3F] text-white",
+            headerTitle: "text-white",
+            headerSubtitle: "text-gray-300",
+            formFieldLabel: "text-white",
+            formFieldInput: "bg-[#1A1A1A] text-white border-[#008170]",
+            formFieldInputShowPasswordButton: "text-white",
+            footerActionText: "text-white",
+            footerActionLink: "text-[#008170] hover:text-[#005B41]",
+            identityPreviewText: "text-white",
+            identityPreviewEditButton: "text-[#008170] hover:text-[#005B41]",
+            formFieldSuccess: "text-[#008170]",
+            formFieldError: "text-red-500",
+            alertText: "text-white",
+            alertTextDanger: "text-red-500",
+            dividerText: "text-white",
+            formHeaderTitle: "text-white",
+            formHeaderSubtitle: "text-gray-300",
+            otpCodeFieldInput: "bg-[#1A1A1A] text-white border-[#008170]",
           },
         }}
       >

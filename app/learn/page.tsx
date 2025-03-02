@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-
+import NetworkBackground from "../components/NetworkBackground";
 // Define transaction interface
 interface Transaction {
   id: string;
@@ -218,9 +218,12 @@ const Learn = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0F0F0F] text-white">
+    <div className="min-h-screen bg-[#0F0F0F] text-white relative">
+      <div className="absolute inset-0 z-[1]">
+        <NetworkBackground />
+      </div>
       
-      <div className="max-w-6xl mx-auto px-4 py-12 mt-14">
+      <div className="relative z-[2] max-w-6xl mx-auto px-4 py-12 mt-14">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-[#008170] mb-2">Fraud Detection Training</h1>
           <p className="text-lg text-gray-300">Learn to identify suspicious transactions and protect against fraud</p>
