@@ -6,9 +6,7 @@
       "use": "@vercel/next"
     }
   ],
-  "functions": {
-    "app/api/**/*.ts": {
-      "maxDuration": 60
-    }
+  "config": {
+    "maxDuration": 60
   }
 } 
