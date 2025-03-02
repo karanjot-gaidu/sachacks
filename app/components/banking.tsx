@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useUser } from '@clerk/nextjs';
+import { useGame } from './game-context';
 
 interface Transaction {
     id: number;
@@ -49,6 +50,26 @@ export default function Banking({ onBack }: BankingProps) {
     const [transferAmount, setTransferAmount] = useState('');
     const [transferDescription, setTransferDescription] = useState('');
 
+    const { scenario, loading, userGuesses, markAsFraudulent, unmarkAsFraudulent, checkAnswer } = useGame();
+
+    if (loading) {
+        return <div className="text-white p-4">Loading banking data...</div>;
+    }
+
+    if (!scenario) {
+        return <div className="text-white p-4">No banking data available</div>;
+    }
+
+    const handleTransactionClick = (transactionId: number) => {
+        if (userGuesses.includes(transactionId)) {
+            unmarkAsFraudulent(transactionId);
+        } else {
+            markAsFraudulent(transactionId);
+        }
+    };
+
+    const { correct, message } = checkAnswer();
+
     const handleTransfer = (e: React.FormEvent) => {
         e.preventDefault();
         if (!transferAmount || !transferDescription) return;
@@ -86,51 +107,42 @@ export default function Banking({ onBack }: BankingProps) {
 
             {/* Content */}
             <div className="p-3">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 gap-4">
                     {/* Account Balance Card */}
-                    <div className="col-span-1 bg-[#1A1A1A] rounded-xl p-6 shadow-lg">
+                    <div className="bg-[#1A1A1A] rounded-xl p-6 shadow-lg">
                         <h2 className="text-[#008170] text-lg font-semibold mb-2">Account Balance</h2>
-                        <p className="text-white text-3xl font-bold">${balance.toFixed(2)}</p>
+                        <p className="text-white text-3xl font-bold">${scenario.initialBalance.toFixed(2)}</p>
                         <p className="text-gray-400 text-sm mt-2">Available Balance</p>
                     </div>
 
-                    {/* Quick Transfer Card */}
-                    <div className="col-span-2 bg-[#1A1A1A] rounded-xl p-6 shadow-lg">
-                        <h2 className="text-[#008170] text-lg font-semibold mb-4">Quick Transfer</h2>
-                        <form onSubmit={handleTransfer} className="space-y-4">
-                            <div className="flex gap-4">
-                                <input
-                                    type="number"
-                                    value={transferAmount}
-                                    onChange={(e) => setTransferAmount(e.target.value)}
-                                    placeholder="Amount"
-                                    className="flex-1 bg-[#2A2A2A] text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#008170]"
-                                />
-                                <input
-                                    type="text"
-                                    value={transferDescription}
-                                    onChange={(e) => setTransferDescription(e.target.value)}
-                                    placeholder="Description"
-                                    className="flex-1 bg-[#2A2A2A] text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#008170]"
-                                />
+                    {/* Game Instructions */}
+                    <div className="bg-[#1A1A1A] rounded-xl p-6 shadow-lg">
+                        <h2 className="text-[#008170] text-lg font-semibold mb-2">Fraud Detection Exercise</h2>
+                        <p className="text-white mb-2">
+                            Review your transactions and emails to identify fraudulent transactions. 
+                            Click on a transaction to mark/unmark it as suspicious.
+                        </p>
+                        {message && (
+                            <div className={`mt-2 p-3 rounded-lg ${
+                                correct ? 'bg-green-500/20 text-green-500' : 'bg-yellow-500/20 text-yellow-500'
+                            }`}>
+                                {message}
                             </div>
-                            <button
-                                type="submit"
-                                className="w-full bg-[#005B41] hover:bg-[#008170] text-white rounded-lg px-4 py-2 transition-colors duration-300"
-                            >
-                                Send Transfer
-                            </button>
-                        </form>
+                        )}
                     </div>
 
                     {/* Recent Transactions */}
-                    <div className="col-span-1 md:col-span-3 bg-[#1A1A1A] rounded-xl p-6 shadow-lg">
+                    <div className="bg-[#1A1A1A] rounded-xl p-6 shadow-lg">
                         <h2 className="text-[#008170] text-lg font-semibold mb-4">Recent Transactions</h2>
                         <div className="space-y-4">
-                            {transactions.map((transaction) => (
-                                <div
+                            {scenario.transactions.map((transaction) => (
+                                <button
                                     key={transaction.id}
-                                    className="flex items-center justify-between bg-[#2A2A2A] p-4 rounded-lg"
+                                    onClick={() => handleTransactionClick(transaction.id)}
+                                    className={`w-full flex items-center justify-between bg-[#2A2A2A] p-4 rounded-lg transition-colors
+                                        ${userGuesses.includes(transaction.id) 
+                                            ? 'ring-2 ring-red-500 bg-red-500/10' 
+                                            : 'hover:bg-[#3A3A3A]'}`}
                                 >
                                     <div className="flex items-center space-x-4">
                                         <div className={`w-10 h-10 rounded-full flex items-center justify-center
@@ -155,7 +167,7 @@ export default function Banking({ onBack }: BankingProps) {
                                         </p>
                                         <p className="text-gray-400 text-sm">{transaction.status}</p>
                                     </div>
-                                </div>
+                                </button>
                             ))}
                         </div>
                     </div>
