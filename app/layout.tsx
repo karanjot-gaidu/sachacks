@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://clerk-next-app.vercel.app/"),
   title: "Cheque-a-Fraud",
   description:
-    "A simple and powerful Next.js template featuring authentication and user management powered by Clerk.",
+    "An educational game which provides insight on Fraud Type and Detection",
   openGraph: { images: ["/og.png"] },
 };
 
