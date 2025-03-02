@@ -1,28 +1,12 @@
 import React from 'react'
 import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs"
+import NetworkBackground from './components/NetworkBackground'
 
 export default function Home() {
   return (
     <>
       <main className="bg-[#0F0F0F] relative">
-      {/* <div className="relative flex gap-3">
-              <SignedIn>
-                <Link
-                  href="/dashboard"
-                  className="px-4 py-2 rounded-full bg-[#131316] text-white text-sm font-semibold"
-                >
-                  Dashboard
-                </Link>
-              </SignedIn>
-              <SignedOut>
-                <SignInButton>
-                  <button className="px-4 py-2 rounded-full bg-[#131316] text-white text-sm font-semibold">
-                    Sign in
-                  </button>
-                </SignInButton>
-              </SignedOut>
-            </div> */}
-
+        <NetworkBackground />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
           <div className="flex flex-col items-center justify-center h-screen w-full">
             <h1 className="text-6xl font-bold text-[#008170] mb-4">Cheque A Fraud</h1>
@@ -37,8 +21,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-        </main>
+      </main>
     </>
   )
 }
