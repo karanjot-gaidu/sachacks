@@ -46,6 +46,9 @@ export default function RootLayout({
           },
         }}
       >
+        <head>
+          <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet" />
+        </head>
         <body className={`min-h-screen flex flex-col antialiased`}>
           <Navbar />
           {children}
