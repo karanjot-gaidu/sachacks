@@ -10,6 +10,8 @@
     <img src="./public/LogoTrans.png" alt="logo" width="80" height="50">
     <h1 style="font-size: 24px; font-weight: bold; align-items: center;">Cheque-a-Fraud - SacHacks VI 2025</h1>
 
+<p> Live Link: <a href="https://cheque-a-fraud.co/">Cheque-a-Fraud</a> </p>
+
     
 <p align="center">
         <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React">
