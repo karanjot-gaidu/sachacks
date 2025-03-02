@@ -32,7 +32,7 @@ export default function Navbar() {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
                 <div className="flex justify-between items-center h-full">
                     <Link href="/" className="flex items-center h-full">
-                        <Image src="/light-logo.png" alt="logo" width={50} height={50} />
+                        <Image src="/LogoTrans.png" alt="logo" width={85} height={85} />
                     </Link>
                     <div className="flex items-center h-full space-x-6">
                         <Link href="/" className="flex items-center h-full px-3 text-white hover:text-[#008170] transition-colors">Home</Link>
