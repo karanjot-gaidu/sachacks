@@ -7,6 +7,10 @@ import Homescreen from './homescreen';
 import { useGame } from './game-context';
 import VictoryScreen from './victory-screen';
 import confetti from 'canvas-confetti';
+import Calendar from './calendar';
+import Photos from './photos';
+import Messages from './messages';
+import Settings from './settings';
 
 export default function Phone() {
     const [currentApp, setCurrentApp] = useState<string | null>(null);
@@ -56,6 +60,14 @@ export default function Phone() {
                 return <Banking onBack={handleBack} />;
             case 'email':
                 return <Email onBack={handleBack} />;
+            case 'calendar':
+                return <Calendar onBack={handleBack} />;
+            case 'photos':
+                return <Photos onBack={handleBack} />;
+            case 'messages':
+                return <Messages onBack={handleBack} />;
+            case 'settings':
+                return <Settings onBack={handleBack} />;
             default:
                 return <Homescreen onAppClick={setCurrentApp} />;
         }
