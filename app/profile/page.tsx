@@ -4,7 +4,7 @@ import { useState } from "react";
 import NavBar from "../components/navbar";
 import { useClerk } from "@clerk/nextjs";
 import SignInPage from "../login/page";
-
+import NetworkBackground from "../components/NetworkBackground";
 export default function ProfilePage() {
   const { user, isLoaded, isSignedIn } = useUser();
   const [isUploading, setIsUploading] = useState(false);
@@ -59,6 +59,7 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-screen relative bg-[#0F0F0F]">
+      <NetworkBackground />
       <NavBar />
 
       {/* Remove space background and use the dark theme background */}

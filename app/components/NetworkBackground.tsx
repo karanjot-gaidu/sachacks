@@ -72,7 +72,7 @@ const NetworkBackground = () => {
       // Draw nodes
       nodes.forEach((node) => {
         ctx.beginPath();
-        ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
+        ctx.arc(node.x, node.y, 3, 0, Math.PI * 2);
         ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
         ctx.fill();
         node.update();
