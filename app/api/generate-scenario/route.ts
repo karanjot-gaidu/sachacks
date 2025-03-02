@@ -39,6 +39,15 @@ const PROMPT = `Generate a realistic banking scenario where a person has some le
 3. Clear but subtle hints in the emails about which transactions might be fraudulent
 4. An initial account balance
 
+For emails, include detailed content that tells a story. Some emails should be:
+- Security alerts from the bank
+- Confirmation emails for legitimate transactions
+- Marketing emails (as distractions)
+- Suspicious activity notifications
+- Personal emails that might reference financial activities
+
+Each email should have a complete message body with proper formatting, greetings, and signatures.
+
 Format the response as a JSON object matching this TypeScript interface:
 
 interface GeneratedScenario {
@@ -56,6 +65,7 @@ interface GeneratedScenario {
         from: string;
         subject: string;
         preview: string;
+        fullContent: string;
         date: string;
         unread: boolean;
         relatedTransactionId?: number;
@@ -64,7 +74,7 @@ interface GeneratedScenario {
     fraudulentTransactionIds: number[];
 }
 
-Make the scenario realistic and ensure the fraud isn't too obvious.`;
+Make the scenario realistic and ensure the fraud requires careful attention to detail to identify.`;
 
 export async function GET() {
     try {

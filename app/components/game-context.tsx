@@ -1,7 +1,8 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect } from 'react';
-import { GeneratedScenario, GeneratedTransaction, GeneratedEmail } from '../api/generate-scenario/route';
+import { GeneratedScenario } from '../api/generate-scenario/route';
+import LoadingScreen from './loading-screen';
 
 interface GameContextType {
     scenario: GeneratedScenario | null;
@@ -10,6 +11,8 @@ interface GameContextType {
     markAsFraudulent: (transactionId: number) => void;
     unmarkAsFraudulent: (transactionId: number) => void;
     checkAnswer: () => { correct: boolean; message: string };
+    generateNewGame: () => Promise<void>;
+    isGenerating: boolean;
 }
 
 const GameContext = createContext<GameContextType | undefined>(undefined);
@@ -17,20 +20,34 @@ const GameContext = createContext<GameContextType | undefined>(undefined);
 export function GameProvider({ children }: { children: React.ReactNode }) {
     const [scenario, setScenario] = useState<GeneratedScenario | null>(null);
     const [loading, setLoading] = useState(true);
+    const [isGenerating, setIsGenerating] = useState(false);
     const [userGuesses, setUserGuesses] = useState<number[]>([]);
 
     useEffect(() => {
-        fetchScenario();
+        // Check if we have a saved scenario in localStorage
+        const savedScenario = localStorage.getItem('bankingScenario');
+        if (savedScenario) {
+            setScenario(JSON.parse(savedScenario));
+            setLoading(false);
+        } else {
+            generateNewGame();
+        }
     }, []);
 
-    const fetchScenario = async () => {
+    const generateNewGame = async () => {
+        setIsGenerating(true);
         try {
             const response = await fetch('/api/generate-scenario');
             const data = await response.json();
             setScenario(data);
+            // Save to localStorage
+            localStorage.setItem('bankingScenario', JSON.stringify(data));
+            // Reset user guesses
+            setUserGuesses([]);
         } catch (error) {
-            console.error('Error fetching scenario:', error);
+            console.error('Error generating new game:', error);
         } finally {
+            setIsGenerating(false);
             setLoading(false);
         }
     };
@@ -78,8 +95,11 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
             userGuesses,
             markAsFraudulent,
             unmarkAsFraudulent,
-            checkAnswer
+            checkAnswer,
+            generateNewGame,
+            isGenerating
         }}>
+            {isGenerating && <LoadingScreen />}
             {children}
         </GameContext.Provider>
     );
