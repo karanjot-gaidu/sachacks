@@ -6,7 +6,7 @@ import localFont from "next/font/local";
 import Navbar from "./components/navbar";
 export const metadata: Metadata = {
   metadataBase: new URL("https://clerk-next-app.vercel.app/"),
-  title: "Next.js Clerk Template",
+  title: "Cheque-a-Fraud",
   description:
     "A simple and powerful Next.js template featuring authentication and user management powered by Clerk.",
   openGraph: { images: ["/og.png"] },
