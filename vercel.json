@@ -6,9 +6,11 @@
         "use": "@vercel/next"
       }
     ],
-    "functions": {
-      "api/*.js": {
-        "maxDuration": 60
+        "functions": {
+          "api/*.ts": {
+            "memory": 3009,
+            "maxDuration": 60
+          }
+        }
       }
-    }
-  }
+  
