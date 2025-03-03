@@ -6,7 +6,7 @@ import localFont from "next/font/local";
 import Navbar from "./components/navbar";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://clerk-next-app.vercel.app/"),
+  metadataBase: new URL("https://cheque-a-fraud.co/"),
   title: "Cheque-a-Fraud",
   description:
     "An educational game which provides insight on Fraud Type and Detection",

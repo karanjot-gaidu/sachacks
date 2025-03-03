@@ -2,8 +2,9 @@ import OpenAI from 'openai';
 import { NextResponse } from 'next/server';
 
 const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-});
+    apiKey: process.env.GEMINI_API_KEY,
+    baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/",
+  });
 
 export interface GeneratedTransaction {
     id: number;
@@ -78,9 +79,10 @@ Make the scenario realistic and ensure the fraud requires careful attention to d
 
 export async function GET() {
     try {
+          
         const completion = await openai.chat.completions.create({
             messages: [{ role: "user", content: PROMPT }],
-            model: "gpt-4o-mini",
+            model: "gemini-2.0-flash",
             response_format: { type: "json_object" },
         });
         const generatedScenario = completion.choices[0].message.content;
