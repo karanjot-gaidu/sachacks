@@ -8,9 +8,9 @@
 
 <div align="center">
     <img src="./public/LogoTrans.png" alt="logo" width="80" height="50">
-    <h1 style="font-size: 24px; font-weight: bold; align-items: center;">Cheque-a-Fraud - SacHacks VI 2025</h1>
+    <h1 style="font-size: 24px; font-weight: bold; align-items: center;">Cheque-a-Fraud - SacHacks VI Winner</h1>
 
-<p> Live Link: <a href="https://cheque-a-fraud.co/">Cheque-a-Fraud</a> </p>
+<h2> Live Link: <a href="https://cheque-a-fraud.co/">Cheque-a-Fraud</a> </h2>
 
     
 <p align="center">
@@ -114,14 +114,14 @@ npm run dev
 ## 👥 Team
 
 - [Karanjot Gaidu](https://github.com/karanjot-gaidu)
-- [Sandeeo Virk](https://github.com/sandeepv6)
+- [Sandeep Virk](https://github.com/sandeepv6)
 - [Kopal Singh](https://github.com/Kopal-Singh)
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="50%"><a href="https://github.com/karanjot-gaidu"><img src="https://avatars.githubusercontent.com/u/90838376?v=4" width="100px;" alt="Karanjot Gaidu"/><br /><sub><b>Karanjot Gaidu</b></sub></a><br /></td>
-      <td align="center" valign="top" width="50%"><a href="https://github.com/sandeepv6"><img src="https://avatars.githubusercontent.com/u/71682449?v=4" width="100px;" alt="Sandeep Virk"/><br /><sub><b>Sandeep Virk</b></sub></a><br /></td>
-      <td align="center" valign="top" width="50%"><a href="https://github.com/Kopal-Singh"><img src="https://avatars.githubusercontent.com/u/71322555?v=4" width="100px;" alt="Kopal Singh"/><br /><sub><b>Kopal Singh</b></sub></a><br /></td>
+      <td align="center" valign="top" width="33.33%"><a href="https://github.com/karanjot-gaidu"><img src="https://avatars.githubusercontent.com/u/90838376?v=4" width="100px;" alt="Karanjot Gaidu"/><br /><sub><b>Karanjot Gaidu</b></sub></a><br /></td>
+      <td align="center" valign="top" width="33.33%"><a href="https://github.com/sandeepv6"><img src="https://avatars.githubusercontent.com/u/71682449?v=4" width="100px;" alt="Sandeep Virk"/><br /><sub><b>Sandeep Virk</b></sub></a><br /></td>
+      <td align="center" valign="top" width="33.33%"><a href="https://github.com/Kopal-Singh"><img src="https://avatars.githubusercontent.com/u/71322555?v=4" width="100px;" alt="Kopal Singh"/><br /><sub><b>Kopal Singh</b></sub></a><br /></td>
     </tr>
   </tbody>
 
